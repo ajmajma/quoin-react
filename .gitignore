@@ -1,0 +1,17 @@
+.DS_Store
+.idea
+/client/bundle.js
+/client/bower_components
+/client/index.html
+/client/json/SupplementTypesMetadata.json
+/client/test/results
+/coverage
+/node_modules
+/npm-debug.log
+/dist
+/client/views/
+/client/*.min.js
+/log
+/.tmp
+/client/css/irc.min.css
+/client/bundle.js

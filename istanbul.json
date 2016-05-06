@@ -1,0 +1,21 @@
+{
+  "instrumentation": {
+    "root": "client",
+    "include-all-sources": true,
+    "verbose": true,
+    "excludes": [
+      "bundle.js",
+      "production.min.js",
+      "app.jsx",
+      "DevTools.jsx",
+      "**/*.spec.*.js",
+      "test-helpers.js"
+    ]
+  },
+  "reporting": {
+    "reports": [
+      "lcov",
+      "cobertura"
+    ]
+  }
+}
