@@ -25,9 +25,6 @@ module.exports = function() {
             },
             files: {
                 'client/index.html': [
-                    'cengage/bower_components/jquery/dist/jquery.min.js',
-                    'cengage/bower_components/bootstrap/dist/css/bootstrap.min.css',
-                    'cengage/bower_components/bootstrap/dist/js/bootstrap.min.js',
                     'client/css/irc.min.css'
                 ]
             }

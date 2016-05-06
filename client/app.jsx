@@ -14,6 +14,9 @@ import mainPage from './main-page';
 
 import DevTools from './dev-tools';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 const middlewares = [];
 
 
