@@ -1,52 +1,60 @@
 import React from 'react';
 
+import { indigo500 } from 'material-ui/styles/colors';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 import mainHeader from '../main-header';
 
-import LeftNav from 'material-ui/lib/left-nav';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import RaisedButton from 'material-ui/lib/raised-button';
+import introSlide from '../intro-slide';
+import reactSlide from '../react-slide';
+import reduxSlide from '../redux-slide';
 
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
-import MyRawTheme from '../theme';
+const components = {
+    intro: introSlide.Component,
+    react: reactSlide.Component,
+    redux: reduxSlide.Component
+};
+
+const muiTheme = getMuiTheme({
+    palette: {
+        primary1Color: indigo500,
+        pickerHeaderColor: indigo500
+    },
+    appBar: {
+        height: 50
+    }
+});
 
 export default class MainPage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { open: false };
-        this.constructor.childContextTypes = {
-            muiTheme: React.PropTypes.object
-        };
-        this.handleToggle = this.handleToggle.bind(this);
+        this.renderSlide = this.renderSlide.bind(this);
     }
 
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getMuiTheme(MyRawTheme)
-        };
-    }
+    renderSlide() {
+        const Comp = components[this.props.currentPage || 'intro'];
 
-    handleToggle() {
-        this.setState({ open: !this.state.open });
+        return <Comp />;
     }
 
     render() {
         return (
-            <div>
-                <mainHeader.Component />
-                <RaisedButton
-                    label="Toggle LeftNav"
-                    onTouchTap={this.handleToggle}
-                    />
-                <LeftNav open={this.state.open}>
-                  <MenuItem>Menu Item</MenuItem>
-                  <MenuItem>Menu Item 2</MenuItem>
-                </LeftNav>
-            </div>
+            <MuiThemeProvider muiTheme={muiTheme}>
+                <div>
+                    <mainHeader.Component changePage={this.props.changePage} />
+                    <div className="slide-body">
+                        {this.renderSlide()}
+                    </div>
+                </div>
+            </MuiThemeProvider>
         );
     }
 }
 MainPage.displayName = 'MainPage';
 
 MainPage.propTypes = {
+    changePage: React.PropTypes.func,
+    currentPage: React.PropTypes.string
 };

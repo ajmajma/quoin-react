@@ -1,15 +1,20 @@
 import React from 'react';
-
-import AppBar from 'material-ui/lib/app-bar';
-import IconButton from 'material-ui/lib/icon-button';
-import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
-import MenuItem from 'material-ui/lib/menus/menu-item';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 export default class MainHeader extends React.Component {
     constructor(props) {
         super(props);
+
+        this.menuClick = this.menuClick.bind(this);
+    }
+
+    menuClick(event, value) {
+        this.props.changePage(value);
     }
 
     render() {
@@ -24,10 +29,12 @@ export default class MainHeader extends React.Component {
                         }
                         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
                         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+                        onChange={this.menuClick}
+                        value={this.props.currentPage}
                         >
-                        <MenuItem primaryText="Refresh" />
-                        <MenuItem primaryText="Help" />
-                        <MenuItem primaryText="Sign out" />
+                        <MenuItem primaryText="Intro" value="intro" />
+                        <MenuItem primaryText="React" value="react" />
+                        <MenuItem primaryText="Redux" value="redux" />
                     </IconMenu>
                 }
                 />
@@ -37,4 +44,6 @@ export default class MainHeader extends React.Component {
 MainHeader.displayName = 'MainHeader';
 
 MainHeader.propTypes = {
+    changePage: React.PropTypes.func,
+    currentPage: React.PropTypes.string
 };
