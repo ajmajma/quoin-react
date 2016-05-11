@@ -20,7 +20,7 @@ export default class MainHeader extends React.Component {
     render() {
         return (
             <AppBar
-                title="React Redux Presentation"
+                title="Quoin Presentation"
                 iconElementLeft={<IconButton><NavigationClose /></IconButton>}
                 iconElementRight={
                     <IconMenu
