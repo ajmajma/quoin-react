@@ -11,6 +11,12 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
+import { indigo300 } from 'material-ui/styles/colors';
+import Avatar from 'material-ui/Avatar';
+import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import AutoRenew from 'material-ui/svg-icons/action/autorenew';
+import Code from 'material-ui/svg-icons/action/code';
+import Tab from 'material-ui/svg-icons/action/tab';
 
 
 export default class ReduxSlide extends React.Component {
@@ -92,23 +98,29 @@ export default class ReduxSlide extends React.Component {
                       <List>
                         <Subheader>Redux is a javascript library set up to manage your application state</Subheader>
                         <ListItem
+                        leftAvatar={<Avatar icon={<EditorInsertChart />} backgroundColor={indigo300} />}
                         primaryText="Redux is a predictable state container for JavaScript apps."
+                        secondaryTextLines={2}
                         secondaryText="Redux is an evolution of the ideas presented by Facebook's Flux, avoiding the complexity found in Flux by looking to how applications are built with the Elm language."
                         />
                          <Divider />
                         <ListItem
+                        leftAvatar={<Avatar icon={<AutoRenew />} backgroundColor={indigo300} />}
                         primaryText="Provides unidirectional dataflow for your application"
-                        secondaryText="this forces developers to architect the state on bigger applications"
+                        secondaryTextLines={2}
+                        secondaryText="this forces developers to architect the state on bigger applications. This also : Leads to using pure functions, which in turn makes debugging and testing easier."
                         />
                          <Divider />
                         <ListItem
+                        leftAvatar={<Avatar icon={<Code />} backgroundColor={indigo300} />}
                         primaryText="You can think of it as the MV part of the application"
-                        secondaryText="Controlling the data behind the view"
+                        secondaryText="It is also A single data store contains the state for your app"
                         />
                          <Divider />
                         <ListItem
+                        leftAvatar={<Avatar icon={<Tab />} backgroundColor={indigo300} />}
                         primaryText="In our react app, this is how we maintain our application state and actions (click, fetch, change page, etc) , react simply displays the state."
-                        secondaryText="Your status is visible to everyone you use with"
+                        secondaryText="This keeps the react logic fairly straight forward"
                         />
                         </List>
                     </div>
@@ -119,8 +131,8 @@ export default class ReduxSlide extends React.Component {
                      <List>
                         <Subheader>Redux enforces a uni directional data flow</Subheader>
                         <ListItem
-                            primaryText="Action -> Store -> Reducer -> View "
-                            secondaryText="Redux is an evolution of the ideas presented by Facebook's Flux, avoiding the complexity found in Flux by looking to how applications are built with the Elm language."
+                            secondaryText="React components themselves are stateless (most of the time), all of the state is kept in the Redux store, one common place, for simplicity"
+                            primaryText="Redux is an evolution of the ideas presented by Facebook's Flux, avoiding the complexity found in Flux by looking to how applications are built with the Elm language."
                             />
                          <Divider />
                         <ListItem
@@ -130,12 +142,16 @@ export default class ReduxSlide extends React.Component {
                          <Divider />
                         <ListItem
                             primaryText="User events, data modifications and their handlers look like : action creators -> action -> dispatcher -> callback "
-                            secondaryText="Controlling the data behind the view"
+                            secondaryText="Action -> Store -> Reducer -> View "
                             />
                          <Divider />
                         <ListItem
                             primaryText="Set up Store on App level, connect to smart component with containers, where we hook in actions and statToProps"
-                            secondaryText="Your status is visible to everyone you use with"
+                            secondaryText="Your application emits an action, that defines something that just happened that will affect the state "
+                            />
+                         <ListItem
+                            primaryText="We use mapDispatchToProps in our container to allow us to bind dispatch to our actions for async calls"
+                            secondaryText="This alows us to preprocess the call before running it through the redux cycle via holding onto the dispatch"
                             />
                         </List>
                         <RaisedButton label="Redux Flow" onTouchTap={this.handleOpen} />
@@ -159,7 +175,7 @@ export default class ReduxSlide extends React.Component {
                         <ListItem
                             primaryText="Facebook Initially released Flux to run the architecture behind React"
                             />
-                         <Divider />
+                        <Divider />
                         <ListItem
                             primaryText="There are many implementations and ideas behind running flux, Relay (facebook), Reflux, Alt, Redux, Flumonx, Fluxible, Fluxxor, Marty.js, Fynx, McFly, Delorean.js, fluxify..."
                             />
@@ -225,7 +241,7 @@ export default class ReduxSlide extends React.Component {
                 <StepLabel>The Redux "flow"</StepLabel>
               </Step>
               <Step>
-                <StepLabel>Setup and alternatives</StepLabel>
+                <StepLabel>Alternatives</StepLabel>
               </Step>
             </Stepper>
             <ExpandTransition loading={loading} open={true}>

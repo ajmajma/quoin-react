@@ -9,6 +9,14 @@ import Divider from 'material-ui/Divider';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import { List, ListItem } from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import { indigo300 } from 'material-ui/styles/colors';
+import Avatar from 'material-ui/Avatar';
+import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import Build from 'material-ui/svg-icons/action/build';
+import Code from 'material-ui/svg-icons/action/code';
+import Settings from 'material-ui/svg-icons/action/tab';
 
 export default class ReactSlide extends React.Component {
     constructor(props) {
@@ -77,25 +85,53 @@ export default class ReactSlide extends React.Component {
               <Step>
                 <StepLabel>What is React?</StepLabel>
                 <StepContent>
-                  <p>
-                    React.js is a JavaScript library for building user interfaces, built by engineers at Facebook.
-                  </p>
-                  <Divider />
-                  <p>
-                    React is an open-source JavaScript library providing a view for data rendered as HTML. React views are typically rendered using components that contain additional components specified as custom HTML tags. React promises programmers a model in which subcomponents cannot directly affect enclosing components ("data flows down"); efficient updating of the HTML document when data changes; and a clean separation between components on a modern single-page application.
-                    </p>
-                    <Divider />
-                    <p>
-                    React is very fast because it never talks to the DOM directly. React maintains a fast in-memory representation of the DOM. render() methods actually return a description of the DOM, and React can compare this description with the in-memory representation to compute the fastest way to update the browser.
-                    </p>
-                    <Divider />
-                    <p>
-                    Can think of it as the V part of the application
-                    </p>
+                    <List>
+                        <Subheader>React is a javasript library for rendering views.</Subheader>
+                        <ListItem
+                        leftAvatar={<Avatar icon={<EditorInsertChart />} backgroundColor={indigo300} />}
+                        secondaryTextLines={2}
+                        primaryText="React.js is a JavaScript library for building user interfaces, built by engineers at Facebook."
+                        secondaryText="React is an open-source JavaScript library providing a view for data rendered as HTML. React views are typically rendered using components that contain additional components specified as custom HTML tags. React promises programmers a model in which subcomponents cannot directly affect enclosing components (data flows down); efficient updating of the HTML document when data changes; and a clean separation between components on a modern single-page application."
+                        />
+                         <Divider />
+                        <ListItem
+                        leftAvatar={<Avatar icon={<Code />} backgroundColor={indigo300} />}
+                        secondaryTextLines={2}
+                        primaryText="It's aim is to be simple, declarative, composable, and easy to get up and running with"
+                        secondaryText="It is fairly straight forward to create a general react component, however the architecture (redux in our case) tends to add some complexity"
+                        />
+                         <Divider />
+                        <ListItem
+                        leftAvatar={<Avatar icon={<Build />} backgroundColor={indigo300} />}
+                        secondaryTextLines={2}
+                        primaryText="React is very fast because it never talks to the DOM directly. React maintains a fast in-memory representation of the DOM. render() methods actually return a description of the DOM, and React can compare this description with the in-memory representation to compute the fastest way to update the browser."
+                        secondaryText="The the virtual DOM as React’s local and simplified copy of the HTML DOM. It allows React to do its computations within this abstract world and skip the “real” DOM operations, often slow and browser-specific."
+                        />
+                         <Divider />
+                        <ListItem
+                        leftAvatar={<Avatar icon={<Settings />} backgroundColor={indigo300} />}
+                        primaryText="We use ES6 currently for react and extend the class : export default class ReactSlide extends React.Component. React also uses JSX, although you are not forced to use any of these if you do not want."
+                        secondaryText="JSX has some limitations but is handy in that it lets you keep your react component simple and clean."
+                        />
+                    </List>
                   {this.renderStepActions(0)}
                 </StepContent>
               </Step>
               <Step>
+                <StepLabel>A look at react</StepLabel>
+                <StepContent>
+                    <img src="images/basic-component.png" />
+                    <p> Using jsx inside the render() function, as well as es6 </p>
+                    <Divider />
+                    <p> We can break these components down into easily re-usable components (like a button or loading icon) </p>
+                    <Divider />
+                    <img src="images/inline-style.png" style={{ display: 'block' }}/>
+                    <p> Can delcare css styles in javascript, although this is not perfect yet </p>
+                    <Divider />
+                  {this.renderStepActions(1)}
+                </StepContent>
+              </Step>
+               <Step>
                 <StepLabel>How Does React Compare?</StepLabel>
                 <StepContent>
                    <Table>
@@ -144,18 +180,7 @@ export default class ReactSlide extends React.Component {
                       </TableRow>
                     </TableBody>
                   </Table>
-                  {this.renderStepActions(1)}
-                </StepContent>
-              </Step>
-              <Step>
-                <StepLabel>A look at react</StepLabel>
-                <StepContent>
-                    <img src="images/basic-component.png" />
-                    <p> Using jsx inside the render() function, as well as es6 </p>
-                    <Divider />
-                    <p> It's Declarative </p>
-                    <img src="images/inline-style.png" style={{ display: 'block' }}/>
-                    <p> Can delcare css styles in javascript, although this is not perfect yet </p>
+                  <p> If you are looking for a complete and complex app solution, Angular 2 would be good. If are looking for fast rendering with a lightweight view library, React is better.</p>
                     <Divider />
                   {this.renderStepActions(2)}
                 </StepContent>
